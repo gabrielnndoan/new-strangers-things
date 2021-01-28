@@ -14,12 +14,18 @@ import Home from "./Home"
         <div>
             <header> Stranger's Things </header>
         <Router>
+          <div className="searchAndMenu">
           <nav>
+            <form>
+              <label> Search </label>
+              <input></input>
+            </form>
             <Link to="/home" className="link">HOME</Link>
             <Link to="/posts" className="link">POSTS</Link>
             <Link to="/profile" className="link">PROFILE</Link>
             <Link to="/login" className="link">LOGIN</Link>
           </nav>
+          </div>
           <main>
             <Switch>
               <Route path="/home">

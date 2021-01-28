@@ -2,7 +2,13 @@ header {
   display: flex;
   justify-content: center;
   font-size: 65px;
-  background: #c68de2;
+  font-family: 'Texturina', serif;
+  background: #F2CB57;
+}
+
+.searchAndMenu{
+  display: flex;
+  justify-content: center;
 }
 
 nav {
@@ -11,8 +17,25 @@ nav {
 }
 
 .link {
+  justify-content: flex-end;
   align-items: space-between;
   padding: 2px 2em;
   font-size: 20px;
-  background: #ea98da;
+  color: white;
+  background: #4298a1;
+}
+
+form{
+  display: flex;
+  justify-content: flex-start;
+}
+
+label{
+  margin-right: 50px;
+  font-size: 25px;
+}
+
+input{
+  border: solid black;
+  margin-right: 200px;
 }
