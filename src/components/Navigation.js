@@ -7,6 +7,8 @@ import {
 
 import './Navigation.css';
 
+import Home from "./Home"
+
   const Navigation = () => {
     return (
         <div>
@@ -21,13 +23,16 @@ import './Navigation.css';
           <main>
             <Switch>
               <Route path="/home">
-                <div> Home </div>
+                <Home/>
               </Route>
               <Route path="/posts">
-               
+              <div> posts </div>
               </Route>
-              <Route path="/">
-                
+              <Route path="/profile">
+              <div> profile </div>
+              </Route>
+              <Route path="/login">
+              <div> login </div>
               </Route>
             </Switch>
           </main>

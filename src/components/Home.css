@@ -1,0 +1,39 @@
+div {
+  text-align: center;
+}
+
+button {
+  display: block;
+  margin: auto;
+  max-width: 300px;
+  border-radius: 15%;
+  background-color: #025159;
+  color: white;
+}
+
+.latestPostButton {
+  padding: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  position: absolute;
+  left: 25%;
+  bottom: 0px;
+}
+
+.allPostsButton {
+  padding: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  position: absolute;
+  left: 50%;
+  bottom: 0px;
+}
+
+.loginButton {
+  padding: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  position: absolute;
+  left: 75%;
+  bottom: 0px;
+}

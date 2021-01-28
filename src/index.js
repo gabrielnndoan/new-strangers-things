@@ -1,19 +1,17 @@
 import ReactDOM from "react-dom";
-// import {
-//     Navigation
-//   } from './components';
-// import {
-//     Home
-// } from './components/pages'
+import {
+    Navigation
+  } from './components';
+
 
 
 const App = () => {
     return (
-        // <>
-        // <Navigation />
-        // <Home/>
-        // </>
-        <div>Hello World</div>
+        <>
+        <Navigation />
+        {/* <Home/> */}
+        </>
+       
     )
 }
 
