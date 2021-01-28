@@ -13,10 +13,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/gabrielnndoan/new-strangers-things/issues"
-  },
-  "homepage": "https://github.com/gabrielnndoan/new-strangers-things#readme",
+  
+  
   "dependencies": {
     "axios": "^0.21.1",
     "react": "^17.0.1",
