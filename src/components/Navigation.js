@@ -9,6 +9,7 @@ import './Navigation.css';
 
 import Home from "./Home"
 import Register from "./Register"
+import Login from "./Login"
 
   const Navigation = () => {
     return (
@@ -40,7 +41,7 @@ import Register from "./Register"
               <div> profile </div>
               </Route>
               <Route path="/login">
-              <div> login </div>
+             <Login />
               </Route>
               <Route path="/register">
                 <Register/>
