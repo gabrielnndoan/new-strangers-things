@@ -10,6 +10,7 @@ import './Navigation.css';
 import Home from "./Home"
 import Register from "./Register"
 import Login from "./Login"
+import Posts from "./Posts"
 
   const Navigation = () => {
     return (
@@ -35,13 +36,13 @@ import Login from "./Login"
                 <Home/>
               </Route>
               <Route path="/posts">
-              <div> posts </div>
+                <Posts />
               </Route>
               <Route path="/profile">
-              <div> profile </div>
+                <div> profile </div>
               </Route>
               <Route path="/login">
-             <Login />
+                <Login />
               </Route>
               <Route path="/register">
                 <Register/>
