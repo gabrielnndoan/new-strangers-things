@@ -8,6 +8,7 @@ import {
 import './Navigation.css';
 
 import Home from "./Home"
+import Register from "./Register"
 
   const Navigation = () => {
     return (
@@ -16,7 +17,7 @@ import Home from "./Home"
         <Router>
           <div className="searchAndMenu">
           <nav>
-            <form>
+            <form className="navForm">
               <label> Search </label>
               <input></input>
             </form>
@@ -24,6 +25,7 @@ import Home from "./Home"
             <Link to="/posts" className="link">POSTS</Link>
             <Link to="/profile" className="link">PROFILE</Link>
             <Link to="/login" className="link">LOGIN</Link>
+            <Link to="/register" className="link">REGISTER</Link>
           </nav>
           </div>
           <main>
@@ -39,6 +41,9 @@ import Home from "./Home"
               </Route>
               <Route path="/login">
               <div> login </div>
+              </Route>
+              <Route path="/register">
+                <Register/>
               </Route>
             </Switch>
           </main>
