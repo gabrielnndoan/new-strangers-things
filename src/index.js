@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import ReactDOM from "react-dom";
 import {
     Navigation
@@ -6,9 +7,10 @@ import {
 
 
 const App = () => {
+    const [ authenticate, setAuthentication ] = useState(false)
     return (
         <>
-        <Navigation />
+        <Navigation authenticate = { authenticate } setAuthentication = { setAuthentication } />
         </>
        
     )
