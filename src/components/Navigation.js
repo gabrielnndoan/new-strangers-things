@@ -45,7 +45,7 @@ import Posts from "./Posts"
                 <Login authenticate = { authenticate } setAuthentication = { setAuthentication }/>
               </Route>
               <Route path="/register">
-                <Register/>
+                <Register authenticate = { authenticate } setAuthentication = { setAuthentication }/>
               </Route>
             </Switch>
           </main>
