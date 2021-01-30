@@ -1,5 +1,5 @@
 import { Link, Redirect } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import './Login.css'
 
@@ -9,11 +9,34 @@ const Login = ({authenticate, setAuthentication}) => {
   const [ loginSuccessful, setLoginSuccessful ] = useState(false); 
   
   function authentication(event){
-
-    event.preventDefault();
-    console.log('submitted successfully');
-    setAuthentication(true);
-    setLoginSuccessful(true);
+    if(username && password){
+      useEffect( () => {
+        fetch('https://strangers-things.herokuapp.com/api/2010-LSU-RM-WEB-PT/users/login', {
+        method: "POST",
+        headers: {
+        'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+        user: {
+          username: { username },
+          password: { password }
+        }
+        })
+          }).then(response => response.json())
+          .then(result => {
+           console.log(result);
+          })
+          .catch(console.error);
+      }, [])
+      event.preventDefault();
+      console.log('submitted successfully');
+      // setAuthentication(true);
+      // setLoginSuccessful(true);
+    } else{}
+  // check that the user entered stuff first
+  // ajax request to backend
+  // backend response will say authenticated or not
+    
     
   }
   if(loginSuccessful){
