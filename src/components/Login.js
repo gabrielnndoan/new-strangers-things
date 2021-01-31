@@ -1,5 +1,5 @@
 import { Link, Redirect } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import "./Login.css";
 
@@ -7,6 +7,7 @@ const Login = ({ authenticate, setAuthentication }) => {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const [loginSuccessful, setLoginSuccessful] = useState(false);
+  const [token, setToken] = useState();
 
   function authentication(event) {
     event.preventDefault();
@@ -28,10 +29,9 @@ const Login = ({ authenticate, setAuthentication }) => {
       )
         .then((response) => response.json())
         .then((result) => {
-          console.log(result);
+          setToken(result)
+          login(result)
 
-          // setAuthentication(true);
-          // setLoginSuccessful(true) (create an if statement);
         })
         .catch(console.error);
     } else {
@@ -51,27 +51,41 @@ const Login = ({ authenticate, setAuthentication }) => {
   };
 
   const isLoggedIn = () => {
-    if (logIn) {
+    // prop function,, pass as a prop
+    if (token) {
       console.log("is logged in");
       setAuthentication(true);
+      setLoginSuccessful(true)
     } else {
       console.log("not logged in");
-      setAuthentication(false);
     }
   };
 
   if (loginSuccessful) {
     return <Redirect to="/profile" />;
   }
+
   return (
     <div className="registerInput">
       <h1> Login Page </h1>
       <form className="form" onSubmit={authentication}>
         <label className="userLabel">Username:</label>
-        <input className="userInput" minLength="8"></input>
+        <input
+          className="userInput"
+          minLength="8"
+          onChange={(event) => {
+            setUsername(event.target.value);
+          }}
+        ></input>
 
         <label className="passwordLabel">Password:</label>
-        <input className="passwordInput" minLength="8"></input>
+        <input
+          className="passwordInput"
+          minLength="8"
+          onChange={(event) => {
+            setPassword(event.target.value);
+          }}
+        ></input>
         <div className="organizeButtons">
           <button className="loginButton" type="submit">
             Login

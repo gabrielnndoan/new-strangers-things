@@ -7,6 +7,7 @@ const Register = ({ authenticate, setAuthentication }) => {
   const [username, setUsername] = useState();
   const [password, setPassWord] = useState();
   const [passwordConfirmation, setPassWordConfirmation] = useState();
+  const [token, setToken] = useState();
 
   function createUser(event) {
     event.preventDefault();
@@ -29,8 +30,10 @@ const Register = ({ authenticate, setAuthentication }) => {
         .then((response) => response.json())
         .then((result) => {
           console.log(result);
+          // setToken state result
+          setToken(result.data.token);
           login(result);
-          
+          isLoggedIn(result);
         })
         .catch(console.error);
     }
@@ -43,16 +46,18 @@ const Register = ({ authenticate, setAuthentication }) => {
     localStorage.removeItem("token");
   };
 
-  const isLoggedIn = () => {
-    if (logIn) {
+  const isLoggedIn = (result) => {
+    if (result.data.token) {
       console.log("is logged in");
       setAuthentication(true);
     } else {
       console.log("not logged in");
-      setAuthentication(false);
     }
   };
 
+  if (token) {
+    return <Redirect to="./profile" />;
+  }
   return (
     <div className="registerInput">
       <h1> Register Page </h1>
