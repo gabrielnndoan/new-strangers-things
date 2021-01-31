@@ -11,6 +11,7 @@ import Home from "./Home"
 import Register from "./Register"
 import Login from "./Login"
 import Posts from "./Posts"
+import Profile from "./Profile"
 
   const Navigation = ({authenticate, setAuthentication}) => {
     return (
@@ -39,7 +40,7 @@ import Posts from "./Posts"
                 <Posts />
               </Route>
               <Route path="/profile">
-                <div> profile </div>
+                <Profile authenticate = { authenticate } setAuthentication = { setAuthentication }/>
               </Route>
               <Route path="/login">
                 <Login authenticate = { authenticate } setAuthentication = { setAuthentication }/>

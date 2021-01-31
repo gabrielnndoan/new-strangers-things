@@ -8,9 +8,11 @@ import {
 
 const App = () => {
     const [ authenticate, setAuthentication ] = useState(false)
+    
     return (
         <>
         <Navigation authenticate = { authenticate } setAuthentication = { setAuthentication } />
+       
         </>
        
     )

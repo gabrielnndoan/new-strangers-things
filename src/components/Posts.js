@@ -4,6 +4,7 @@ import "./Posts.css";
 const Posts = () => {
   return (
     <div className="postPage">
+      <h1> Listed Posts </h1>
       <section className="allPosts">
         <h2> All Posts </h2>
         <section className="post"></section>
