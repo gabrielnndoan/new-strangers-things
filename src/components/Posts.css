@@ -25,6 +25,7 @@
   border: solid black;
   width: 700px;
   height: 1000px;
+  overflow: scroll;
 }
 h2 {
   text-align: center;
@@ -45,8 +46,10 @@ h3 {
 .post {
   margin: auto;
   border: solid black;
-  width: 600px;
-  height: 600px;
+  width: 500px;
+  height: 200px;
+  
+  
 }
 
 .postForm {

@@ -18,13 +18,15 @@
     border: solid black;
     width: 700px;
     height: 1000px;
+    overflow: scroll;
 }
 
 .postList {
     margin: auto;
     border: solid black;
-    width: 600px;
-    height: 600px;
+    width: 500px;
+    height: 200px;
+    
 }
 
 .messages{

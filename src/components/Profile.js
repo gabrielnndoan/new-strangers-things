@@ -22,23 +22,25 @@ const Profile = () => {
             <div className="profileSections">
                 <section className="myPosts">
                     <h2> My Posts </h2>
-                    <section className="postList">
+                    <section>
                         {posts.posts.map((post, index) => {
                             return (
-                                <div key = { index }>
+                                <div className="postList" key = { index }>
+                                    <h3> { post.author.username } </h3>
+                                    <h4> { post.title } </h4>
                                     <ul>
-                                        <li> { post.author.username } </li>
-                                        <li> { post.title } </li>
                                         <li> { post.description} </li>
                                         <li> { post.price } </li>
                                     </ul>
+                                    <button> Make An Offer/ Send Message </button>
+                                    <button> View Messages </button>
                                 </div>
                             )
                         })}
                     </section>
-                    <button> Create a New Post </button>
-                    <button> See All Posts </button>
                 </section>
+                <button> Create a New Post </button>
+                <button> See All Posts </button>
                 <section className="messages">
                     <h2> My Messages </h2>
                     <section className="messageList"></section>

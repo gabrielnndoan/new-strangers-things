@@ -3,11 +3,11 @@ import { useState } from "react";
 
 import "./Login.css";
 
-const Login = ({ authenticate, setAuthentication }) => {
+const Login = ({ authenticate, setAuthentication, token, setToken }) => {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const [loginSuccessful, setLoginSuccessful] = useState(false);
-  const [token, setToken] = useState();
+  
 
   function authentication(event) {
     event.preventDefault();
