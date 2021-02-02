@@ -13,7 +13,8 @@ import Login from "./Login"
 import Posts from "./Posts"
 import Profile from "./Profile"
 
-  const Navigation = ({authenticate, setAuthentication, token, setToken}) => {
+  const Navigation = ({authenticate, setAuthentication}) => {
+    
     return (
         <div>
             <header> Stranger's Things </header>
@@ -37,16 +38,16 @@ import Profile from "./Profile"
                 <Home/>
               </Route>
               <Route path="/posts">
-                <Posts authenticate = { authenticate } setAuthentication = { setAuthentication } token = { token } setToken = { setToken } />
+                <Posts authenticate = { authenticate } setAuthentication = { setAuthentication }  />
               </Route>
               <Route path="/profile">
-                <Profile authenticate = { authenticate } setAuthentication = { setAuthentication } token = { token } setToken = { setToken } />
+                <Profile authenticate = { authenticate } setAuthentication = { setAuthentication }  />
               </Route>
               <Route path="/login">
-                <Login authenticate = { authenticate } setAuthentication = { setAuthentication } token = { token } setToken = { setToken } />
+                <Login authenticate = { authenticate } setAuthentication = { setAuthentication }  />
               </Route>
               <Route path="/register">
-                <Register authenticate = { authenticate } setAuthentication = { setAuthentication }token = { token } setToken = { setToken } />
+                <Register authenticate = { authenticate } setAuthentication = { setAuthentication } />
               </Route>
             </Switch>
           </main>

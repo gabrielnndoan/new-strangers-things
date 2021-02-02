@@ -43,6 +43,10 @@ h3 {
   font-family: "Cinzel Decorative", cursive;
 }
 
+li {
+  list-style: none;
+}
+
 .post {
   margin: auto;
   border: solid black;

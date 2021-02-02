@@ -3,11 +3,11 @@ import { useState } from "react";
 
 import "./Login.css";
 
-const Login = ({ authenticate, setAuthentication, token, setToken }) => {
+const Login = ({ authenticate, setAuthentication }) => {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const [loginSuccessful, setLoginSuccessful] = useState(false);
-  
+  const [token, setToken] = useState();
 
   function authentication(event) {
     event.preventDefault();
@@ -29,9 +29,8 @@ const Login = ({ authenticate, setAuthentication, token, setToken }) => {
       )
         .then((response) => response.json())
         .then((result) => {
-          setToken(result)
-          login(result)
-
+          setToken(result);
+          login(result);
         })
         .catch(console.error);
     } else {
@@ -55,7 +54,7 @@ const Login = ({ authenticate, setAuthentication, token, setToken }) => {
     if (token) {
       console.log("is logged in");
       setAuthentication(true);
-      setLoginSuccessful(true)
+      setLoginSuccessful(true);
     } else {
       console.log("not logged in");
     }
