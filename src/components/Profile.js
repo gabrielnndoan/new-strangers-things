@@ -3,17 +3,15 @@ import './Profile.css'
 
 
 const Profile = () => {
-    const [posts, setPosts] = useState()
-    const [messages, setMessages] = useState()
+    const [messages, setMessages] = useState([])
+    const [posts, setPosts] = useState({ posts: [] });
     
     useEffect( () => {
         fetch('https://strangers-things.herokuapp.com/api/2010-LSU-RM-WEB-PT/posts')
             .then(response => response.json())
             .then(result => {
             console.log(result);
-
-            setPosts(result)
-
+            setPosts(result.data)
             })
             .catch(console.error);
     }, [])
@@ -25,7 +23,7 @@ const Profile = () => {
                 <section className="myPosts">
                     <h2> My Posts </h2>
                     <section className="postList">
-                        {posts.map((post, index) => {
+                        {posts.posts.map((post, index) => {
                             return (
                                 <div key = { index }>
                                     <ul>
