@@ -2,56 +2,56 @@ import { Link, Redirect } from "react-router-dom";
 import { useState } from "react";
 
 import "./Login.css";
+import { getToken } from "../auth";
 
-const Login = ({ authenticate, setAuthentication }) => {
+const Login = ({ authenticate, setAuthentication, token }) => {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const [loginSuccessful, setLoginSuccessful] = useState(false);
-  const [token, setToken] = useState();
 
+  getToken(token);
   function authentication(event) {
     event.preventDefault();
-    if (localStorage.getItem("token")) {
-      fetch(
-        "https://strangers-things.herokuapp.com/api/2010-LSU-RM-WEB-PT/users/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
+
+    fetch(
+      "https://strangers-things.herokuapp.com/api/2010-LSU-RM-WEB-PT/users/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user: {
+            username: username,
+            password: password,
           },
-          body: JSON.stringify({
-            user: {
-              username: username,
-              password: password,
-            },
-          }),
-        }
-      )
-        .then((response) => response.json())
-        .then((result) => {
-          setToken(result);
-          login(result);
-        })
-        .catch(console.error);
-    } else {
-      console.log("HA NOT WORKING");
-    }
+        }),
+      }
+    )
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+        console.log(token);
+        isLoggedIn(result);
+      })
+      .catch(console.error);
+
     // check that the user entered stuff first
     // ajax request to backend
     // backend response will say authenticated or not
   }
 
-  const login = (result) => {
-    localStorage.setItem("token", result.data.token);
-  };
+  // const login = (result) => {
+  //   localStorage.setItem("token", result.data.token);
+  // };
 
-  const logOut = () => {
-    localStorage.removeItem("token");
-  };
+  // const logOut = () => {
+  //   localStorage.removeItem("token");
+  // };
 
-  const isLoggedIn = () => {
+  const isLoggedIn = (result) => {
     // prop function,, pass as a prop
-    if (token) {
+    if (result.data.token) {
       console.log("is logged in");
       setAuthentication(true);
       setLoginSuccessful(true);
@@ -90,8 +90,7 @@ const Login = ({ authenticate, setAuthentication }) => {
             Login
           </button>
           <Link className="registerButton" to="/register">
-            {" "}
-            Click to Register{" "}
+            Click to Register
           </Link>
         </div>
       </form>

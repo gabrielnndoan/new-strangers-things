@@ -4,11 +4,14 @@ import { Navigation } from "./components";
 
 const App = () => {
   const [authenticate, setAuthentication] = useState(false);
+  const [token, setToken] = useState("");
 
   return (
     <Navigation
       authenticate={authenticate}
       setAuthentication={setAuthentication}
+      token={token}
+      setToken={setToken}
     />
   );
 };

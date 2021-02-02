@@ -3,26 +3,27 @@ import { Redirect } from "react-router-dom";
 import "./Posts.css";
 import {getToken} from "../auth"
 
-const Posts = ({ authenticate }) => {
+const Posts = ({ authenticate, token }) => {
   const [posts, setPosts] = useState({ posts: [] });
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
   const [price, setPrice] = useState();
+  
+  getToken(token)
 
   useEffect(() => {
     fetch("https://strangers-things.herokuapp.com/api/2010-LSU-RM-WEB-PT/posts")
       .then((response) => response.json())
       .then((result) => {
         setPosts(result.data);
+        console.log(result)
       })
       .catch(console.error);
   }, []);
 
   function makeNewPost(event) {
     event.preventDefault();
-    console.log(token);
-    getToken(token)
-    if (getToken()) {
+    if (localStorage.getItem("token")) {
       fetch(
         "https://strangers-things.herokuapp.com/api/2010-LSU-RM-WEB-PT/posts",
         {

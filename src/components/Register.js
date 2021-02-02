@@ -3,11 +3,10 @@ import "./Register.css";
 import { useState } from "react";
 import { Redirect } from "react-router-dom";
 
-const Register = ({ authenticate, setAuthentication }) => {
+const Register = ({ authenticate, setAuthentication, token, setToken }) => {
   const [username, setUsername] = useState();
   const [password, setPassWord] = useState();
   const [passwordConfirmation, setPassWordConfirmation] = useState();
-  const [token, setToken] = useState();
 
   function createUser(event) {
     event.preventDefault();
@@ -31,13 +30,14 @@ const Register = ({ authenticate, setAuthentication }) => {
         .then((result) => {
           console.log(result);
           // setToken state result
-          setToken(result.data.token);
           login(result);
-          isLoggedIn(result);
+          setToken(localStorage.getItem("token"));
         })
         .catch(console.error);
     }
   }
+  console.log(token);
+
   const login = (result) => {
     localStorage.setItem("token", result.data.token);
   };
@@ -55,9 +55,9 @@ const Register = ({ authenticate, setAuthentication }) => {
     }
   };
 
-  if (token) {
-    return <Redirect to="./profile" />;
-  }
+  // if (login) {
+  //   return <Redirect to="./profile" />;
+  // }
   return (
     <div className="registerInput">
       <h1> Register Page </h1>
