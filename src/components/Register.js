@@ -3,8 +3,8 @@ import "./Register.css";
 import { useState } from "react";
 import { Redirect } from "react-router-dom";
 
-const Register = ({ authenticate, setAuthentication, token, setToken }) => {
-  const [username, setUsername] = useState();
+const Register = ({ authenticate, setAuthentication, token, setToken, username, setUsername }) => {
+  
   const [password, setPassWord] = useState();
   const [passwordConfirmation, setPassWordConfirmation] = useState();
 

@@ -3,10 +3,10 @@ import './Profile.css';
 import { getToken } from '../auth'
 
 
-const Profile = ({ token }) => {
+const Profile = ({ token, username, setUsername }) => {
     const [messages, setMessages] = useState([])
-    const [posts, setPosts] = useState({ posts: [] });
-    const [username, setUsername] = useState();
+    const [posts, setPosts] = useState([]);
+    const [postId, setPostId] = useState (null);
 
     getToken(token);
 
@@ -14,8 +14,8 @@ const Profile = ({ token }) => {
         fetch('https://strangers-things.herokuapp.com/api/2010-LSU-RM-WEB-PT/posts')
             .then(response => response.json())
             .then(result => {
-            console.log(result);
-            setPosts(result.data)
+                console.log(result)
+            setPosts(result.data.posts)
             })
             .catch(console.error);
     }, [])
@@ -24,16 +24,35 @@ const Profile = ({ token }) => {
         fetch('https://strangers-things.herokuapp.com/api/2010-LSU-RM-WEB-PT/users/me', {
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${getToken()}`
             },
         }).then(response => response.json())
             .then(result => {
-            console.log(result);
+                console.log(result)
             setUsername(result.data.username)
             })
             .catch(console.error);
     }, []);
 
+
+    function deletePost(postIdDeleted){
+        fetch(`https://strangers-things.herokuapp.com/api/2010-LSU-RM-WEB-PT/posts/${postIdDeleted}`, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${getToken()}`
+            }
+            }).then(response => response.json())
+            .then(result => {
+                console.log(result);
+                if(result) {
+                    const newPosts = posts.filter(post => post._id !== postIdDeleted)
+                    console.log(newPosts)
+                    setPosts(newPosts)
+                }
+            })
+            .catch(console.error);
+    }
 
     return (
         <div>
@@ -42,7 +61,9 @@ const Profile = ({ token }) => {
                 <section className="myPosts">
                     <h2> My Posts </h2>
                     <section>
-                        {posts.posts.map((post, index) => {
+                        
+                        {posts.map((post, index) => {
+                            if(username === post.author.username){
                             return (
                                 <div className="postList" key = { index }>
                                     <h3> { post.author.username } </h3>
@@ -51,10 +72,10 @@ const Profile = ({ token }) => {
                                         <li> { post.description} </li>
                                         <li> { post.price } </li>
                                     </ul>
-                                    <button> Make An Offer/ Send Message </button>
                                     <button> View Messages </button>
+                                    <button onClick={() => deletePost(post._id)}> Delete Post </button>
                                 </div>
-                            )
+                            )}
                         })}
                     </section>
                 </section>
