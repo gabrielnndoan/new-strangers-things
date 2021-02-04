@@ -9,10 +9,10 @@ const Login = ({ authenticate, setAuthentication, token }) => {
   const [password, setPassword] = useState();
   const [loginSuccessful, setLoginSuccessful] = useState(false);
 
-  getToken(token);
+  
   function authentication(event) {
     event.preventDefault();
-
+    getToken(token);
     fetch(
       "https://strangers-things.herokuapp.com/api/2010-LSU-RM-WEB-PT/users/login",
       {
