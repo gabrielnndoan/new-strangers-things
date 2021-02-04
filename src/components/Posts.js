@@ -1,36 +1,34 @@
 import { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import "./Posts.css";
-import {getToken} from "../auth"
+import { getToken, login } from "../auth";
 
 const Posts = ({ authenticate, token }) => {
   const [posts, setPosts] = useState({ posts: [] });
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
   const [price, setPrice] = useState();
-  
-  getToken(token)
 
   useEffect(() => {
     fetch("https://strangers-things.herokuapp.com/api/2010-LSU-RM-WEB-PT/posts")
       .then((response) => response.json())
       .then((result) => {
         setPosts(result.data);
-        console.log(result)
+        console.log(result);
       })
       .catch(console.error);
   }, []);
 
   function makeNewPost(event) {
     event.preventDefault();
-    if (localStorage.getItem("token")) {
+    if (getToken()) {
       fetch(
         "https://strangers-things.herokuapp.com/api/2010-LSU-RM-WEB-PT/posts",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${getToken()}`,
           },
           body: JSON.stringify({
             post: {
@@ -43,16 +41,15 @@ const Posts = ({ authenticate, token }) => {
       )
         .then((response) => response.json())
         .then((result) => {
-          console.log(token);
           console.log(result);
         })
         .catch(console.error);
     }
+    event.target.reset();
   }
 
   return (
     <div className="postPage">
-      <h1> Listed Posts </h1>
       <section className="allPosts">
         <h2> All Posts </h2>
         <section>

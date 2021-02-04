@@ -10,7 +10,7 @@ import Profile from "./Profile";
 import Logout from "./Logout"
 import { getToken } from "../auth";
 
-const Navigation = ({ authenticate, setAuthentication, token, setToken }) => {
+const Navigation = ({ authenticate, setAuthentication, token, setToken, username, setUsername }) => {
   getToken(token);
   return (
     <div>
@@ -19,7 +19,7 @@ const Navigation = ({ authenticate, setAuthentication, token, setToken }) => {
         <div className="searchAndMenu">
           <nav>
             <form className="navForm">
-              <label> Search </label>
+              <label className="searchBar"> Search </label>
               <input></input>
             </form>
             <Link to="/home" className="link">
@@ -31,7 +31,7 @@ const Navigation = ({ authenticate, setAuthentication, token, setToken }) => {
             <Link to="/profile" className="link">
               PROFILE
             </Link>
-            {token ? (
+            {authenticate ? (
               <Link to="/logout" className="link">
                 LOGOUT
               </Link>
@@ -62,6 +62,8 @@ const Navigation = ({ authenticate, setAuthentication, token, setToken }) => {
                 authenticate={authenticate}
                 setAuthentication={setAuthentication}
                 token={token}
+                username={username}
+                setUsername={setUsername}
               />
             </Route>
             <Route path="/login">
@@ -69,6 +71,8 @@ const Navigation = ({ authenticate, setAuthentication, token, setToken }) => {
                 authenticate={authenticate}
                 setAuthentication={setAuthentication}
                 token={token}
+                username={username}
+                setUsername={setUsername}
               />
             </Route>
             <Route path="/logout">
@@ -84,6 +88,8 @@ const Navigation = ({ authenticate, setAuthentication, token, setToken }) => {
                 setAuthentication={setAuthentication}
                 token={token}
                 setToken={setToken}
+                username={username}
+                setUsername={setUsername}
               />
             </Route>
           </Switch>

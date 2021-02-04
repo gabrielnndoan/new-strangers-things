@@ -2,17 +2,21 @@ import { Link, Redirect } from "react-router-dom";
 import { useState } from "react";
 
 import "./Login.css";
-import { getToken } from "../auth";
+import { getToken, login, isLoggedIn } from "../auth";
 
-const Login = ({ authenticate, setAuthentication, token }) => {
-  const [username, setUsername] = useState();
+const Login = ({
+  authenticate,
+  setAuthentication,
+  token,
+  username,
+  setUsername,
+}) => {
   const [password, setPassword] = useState();
   const [loginSuccessful, setLoginSuccessful] = useState(false);
 
-  
   function authentication(event) {
     event.preventDefault();
-    getToken(token);
+
     fetch(
       "https://strangers-things.herokuapp.com/api/2010-LSU-RM-WEB-PT/users/login",
       {
@@ -30,9 +34,9 @@ const Login = ({ authenticate, setAuthentication, token }) => {
     )
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
-        console.log(token);
-        isLoggedIn(result);
+        login(result.data.token);
+        setAuthentication(true);
+        isLoggedIn(result.data.token);
       })
       .catch(console.error);
 
@@ -49,9 +53,9 @@ const Login = ({ authenticate, setAuthentication, token }) => {
   //   localStorage.removeItem("token");
   // };
 
-  const isLoggedIn = (result) => {
+  const isLoggedIn = (token) => {
     // prop function,, pass as a prop
-    if (result.data.token) {
+    if (token) {
       console.log("is logged in");
       setAuthentication(true);
       setLoginSuccessful(true);
