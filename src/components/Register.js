@@ -5,7 +5,6 @@ import { Redirect } from "react-router-dom";
 import {login, getToken} from '../auth'
 
 const Register = ({ authenticate, setAuthentication, setToken, username, setUsername }) => {
-  
   const [password, setPassWord] = useState();
   const [passwordConfirmation, setPassWordConfirmation] = useState();
 

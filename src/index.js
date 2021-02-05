@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ReactDOM from "react-dom";
 import { Navigation } from "./components";
-import 'bootstrap/dist/css/bootstrap.css';
+
 
 const App = () => {
   const [authenticate, setAuthentication] = useState(false);

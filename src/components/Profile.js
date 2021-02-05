@@ -1,55 +1,37 @@
 import { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
-import "./Profile.css";
 import { getToken } from "../auth";
+import "./Profile.css";
 
-const Messages = () => {
+
+const MessagesLayout = ({ messages, username }) => {
   return (
     <section className="messages">
-      <h2> My Messages </h2>
-      <section className="messageList"></section>
+      <h2> Messages to Me </h2>
+      <section>
+        {messages
+          .filter((message) => {
+            if (message.fromUser.username !== username) {
+              return message;
+            }
+          })
+          .map((message, index) => {
+            return (
+              <section className="messageList" key={index}>
+                <h3>Post Title: {message.post.title} </h3>
+                <h4>From: {message.fromUser.username}</h4>
+                <p>Message: {message.content}</p>
+              </section>
+            );
+          })}
+      </section>
     </section>
   );
 };
 
-const MyPost = ({ posts, username }) => {
-  return (
-    <div>
-      <h1> Welcome {username} </h1>
-      <div className="profileSections">
-        <section className="myPosts">
-          <h2> My Posts </h2>
-          <section>
-            {posts.map((post, index) => {
-              if (username === post.author.username) {
-                return (
-                  <div className="postList" key={index}>
-                    <h3> {post.author.username} </h3>
-                    <h4> {post.title} </h4>
-                    <ul>
-                      <li> {post.description} </li>
-                      <li> {post.price} </li>
-                    </ul>
-                    <button> View Messages </button>
-                    <button onClick={() => deletePost(post._id)}>
-                      Delete Post
-                    </button>
-                  </div>
-                );
-              }
-            })}
-          </section>
-        </section>
-        <button> Create a New Post </button>
-        <button onClick={() => seeAllPosts}> See All Posts </button>
-        <Messages />
-      </div>
-    </div>
-  );
-};
-
-const Profile = ({ username, setUsername }) => {
+const Profile = ({ username, setUsername, authenticate }) => {
   const [posts, setPosts] = useState([]);
+
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
@@ -71,6 +53,8 @@ const Profile = ({ username, setUsername }) => {
       .then((response) => response.json())
       .then((result) => {
         setUsername(result.data.username);
+        console.log(result);
+        setMessages(result.data.messages);
       })
       .catch(console.error);
   }, []);
@@ -98,7 +82,45 @@ const Profile = ({ username, setUsername }) => {
       .catch(console.error);
   }
 
-  return <MyPost posts={posts} username={username} />;
+  return (
+    <div>
+      {getToken() && authenticate ? (
+        <>
+          <h1> Welcome {username} </h1>
+          <div className="profileSections">
+            <section className="myPosts">
+              <h2> My Posts </h2>
+              <section>
+                {posts.map((post, index) => {
+                  if (username === post.author.username) {
+                    return (
+                      <div className="postList" key={index}>
+                        <h3> {post.author.username} </h3>
+                        <h4> {post.title} </h4>
+                        <ul>
+                          <li> {post.description} </li>
+                          <li> {post.price} </li>
+                        </ul>
+                        <button> View Messages </button>
+                        <button onClick={() => deletePost(post._id)}>
+                          Delete Post
+                        </button>
+                      </div>
+                    );
+                  }
+                })}
+              </section>
+            </section>
+            <button> Create a New Post </button>
+            <button onClick={() => seeAllPosts}> See All Posts </button>
+            <MessagesLayout messages={messages} username={username} />
+          </div>
+        </>
+      ) : (
+        <div> Login to access profile.</div>
+      )}
+    </div>
+  );
 };
 
 export default Profile;

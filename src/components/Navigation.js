@@ -29,7 +29,7 @@ const Navigation = ({
       <Router>
         <div className="searchAndMenu">
           <nav>
-            <form className="navForm"/>
+            <form className="navForm" />
             <Link to="/" className="link">
               HOME
             </Link>

@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import "./Posts.css";
 import { getToken } from "../auth";
-// import Main from "./Modal";
+import SendMessages from "./SendMessages";
+
 
 const MakePostForm = ({ posts, setPosts }) => {
   const [title, setTitle] = useState("");
@@ -78,75 +79,9 @@ const MakePostForm = ({ posts, setPosts }) => {
   );
 };
 
-// const Messages = () => {
-//   const [messages, setMessages] = useState("")
-// function createMessage() {
-//   fetch(
-//     `https://strangers-things.herokuapp.com/api/COHORT-NAME/posts/${postId}/${messages}`,
-//     {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//         Authorization: `Bearer ${getToken()}`,
-//       },
-//       body: JSON.stringify({
-//         message: {
-//           content: content,
-//         },
-//       }),
-//     }
-//   )
-//     .then((response) => response.json())
-//     .then((result) => {
-//       console.log(result);
-//     })
-//     .catch(console.error);
-// }
-
-// function openForm() {
-//   if (document.getElementById("myForm")) {
-//     document.getElementById("myForm").style.display = "block";
-//   }
-
-//   function closeForm() {
-//     if (document.getElementById("myForm")) {
-//       return (document.getElementById("myForm").style.display = "none");
-//     }
-//   }
-
-//   return (
-//     <div className="form-popup" id="myForm">
-//       <form className="form-container">
-//         <label className="titleLabel" id="wrapper">
-//           Title:
-//         </label>
-//         <input
-//           className="titleInput"
-//           onChange={(event) => {
-//             setTitle(event.target.value);
-//           }}
-//         ></input>
-//         <label className="descriptionLabel" id="wrapper">
-//           Content:
-//         </label>
-//         <input
-//           className="descriptionInput"
-//           onChange={(event) => {
-//             setContent(event.target.value);
-//           }}
-//         ></input>
-//         <button type="submit">Send Message</button>
-//         <Main/>
-//         {/* <button type="submit" className="btn cancel" onClick={closeForm}>
-//           Close
-//         </button> */}
-//       </form>
-//     </div>
-//   );
-// }
-
 const Posts = ({ authenticate }) => {
   const [posts, setPosts] = useState([]);
+  const [postId, setPostId] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
@@ -159,54 +94,48 @@ const Posts = ({ authenticate }) => {
       .catch(console.error);
   }, []);
 
-  // function searchPosts(event) {
-  //   console.log(posts);
-  //   event.preventDefault();
-  //   posts
-  //     .filter((post) => {
-  //       if (post.description === event.target.value) {
-  //         return post;
-  //       }
-  //     })
-  //     .map((filteredPost) => setPosts(filteredPost));
-  //   // });
-  // }
-
-  const handleChange = (event) => {
-    event.preventDefault();
-    setSearchTerm(event.target.value);
-    const newPosts = posts.filter((post) => {
-      if (post.title === searchTerm) {
-        return post;
-      }
-    });
-    setPosts(newPosts);
-  };
-
   return (
     <div className="postPage">
       <section className="allPosts">
         <form>
+          <h2> All Posts </h2>
           <label className="searchBar"> Search </label>
-          <input type="text" value={searchTerm} onChange={handleChange}></input>
+          <input
+            type="text"
+            placeholder="Search"
+            onChange={(event) => setSearchTerm(event.target.value)}
+          />
+          <section>
+            {posts
+              .filter((post) => {
+                if(searchTerm === "") {
+                  return post
+                } else if(post.title.toLowerCase().includes(searchTerm.toLowerCase()) || post.description.toLowerCase().includes(searchTerm.toLowerCase())) {
+                  return post
+                }
+              })
+              .map((post, index) => {
+                return (
+                  <div className="post" key={index}>
+                    <h3> {post.author.username} </h3>
+                    <h4> {post.title} </h4>
+                    <ul>
+                      <li> {post.description} </li>
+                      <li> {post.price} </li>
+                    </ul>
+                    {authenticate ? (
+                      <SendMessages
+                        posts={posts}
+                        postId={postId}
+                        setPostId={setPostId}
+                      />
+                    ) : null}
+                    {authenticate ? <button>View Messages</button> : null}
+                  </div>
+                );
+              })}
+          </section>
         </form>
-        <h2> All Posts </h2>
-        <section>
-          {posts.map((post, index) => {
-            return (
-              <div className="post" key={index}>
-                <h3> {post.author.username} </h3>
-                <h4> {post.title} </h4>
-                <ul>
-                  <li> {post.description} </li>
-                  <li> {post.price} </li>
-                </ul>
-                {authenticate ? <button> Send Message </button> : null}
-                {authenticate ? <button>View Messages</button> : null}
-              </div>
-            );
-          })}
-        </section>
       </section>
       <MakePostForm posts={posts} setPosts={setPosts} />
     </div>

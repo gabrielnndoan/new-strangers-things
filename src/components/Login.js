@@ -41,9 +41,6 @@ const Login = ({
       .catch(console.error);
   }
 
-
- 
-
   const isLoggedIn = (token) => {
     if (token) {
       console.log("is logged in");

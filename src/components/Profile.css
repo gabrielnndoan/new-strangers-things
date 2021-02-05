@@ -37,12 +37,13 @@
     margin-left: 50px;
     border: solid black;
     width: 500px;
-    height: 600px;
+    height: 1000px;
+    overflow: scroll;
 }
 
 .messageList{
     margin: auto;
     border: solid black;
     width: 350px;
-    height: 250px;
+    height: 150px;
 }
