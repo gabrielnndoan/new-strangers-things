@@ -5,6 +5,8 @@ import { getToken } from "../auth";
 import SendMessages from "./SendMessages";
 
 
+
+
 const MakePostForm = ({ posts, setPosts }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -125,6 +127,7 @@ const Posts = ({ authenticate }) => {
                     </ul>
                     {authenticate ? (
                       <SendMessages
+                        id={post._id}
                         posts={posts}
                         postId={postId}
                         setPostId={setPostId}
