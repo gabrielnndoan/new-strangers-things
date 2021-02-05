@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-
+import { useEffect } from "react";
 import "./Navigation.css";
 
 import Home from "./Home";
@@ -7,22 +7,30 @@ import Register from "./Register";
 import Login from "./Login";
 import Posts from "./Posts";
 import Profile from "./Profile";
-import Logout from "./Logout"
+import Logout from "./Logout";
 import { getToken } from "../auth";
 
-const Navigation = ({ authenticate, setAuthentication, token, setToken, username, setUsername }) => {
-  getToken(token);
+const Navigation = ({
+  authenticate,
+  setAuthentication,
+  token,
+  setToken,
+  username,
+  setUsername,
+}) => {
+  useEffect(() => {
+    if (getToken()) {
+      setAuthentication(true);
+    }
+  }, []);
   return (
     <div>
       <header> Stranger's Things </header>
       <Router>
         <div className="searchAndMenu">
           <nav>
-            <form className="navForm">
-              <label className="searchBar"> Search </label>
-              <input></input>
-            </form>
-            <Link to="/home" className="link">
+            <form className="navForm"/>
+            <Link to="/" className="link">
               HOME
             </Link>
             <Link to="/posts" className="link">
@@ -31,7 +39,7 @@ const Navigation = ({ authenticate, setAuthentication, token, setToken, username
             <Link to="/profile" className="link">
               PROFILE
             </Link>
-            {authenticate ? (
+            {getToken() && authenticate ? (
               <Link to="/logout" className="link">
                 LOGOUT
               </Link>
@@ -40,28 +48,23 @@ const Navigation = ({ authenticate, setAuthentication, token, setToken, username
                 LOGIN
               </Link>
             )}
-            <Link to="/register" className="link">
-              REGISTER
-            </Link>
           </nav>
         </div>
         <main>
           <Switch>
-            <Route path="/home">
+            <Route exact path="/">
               <Home />
             </Route>
             <Route path="/posts">
               <Posts
                 authenticate={authenticate}
                 setAuthentication={setAuthentication}
-                token={token}
               />
             </Route>
             <Route path="/profile">
               <Profile
                 authenticate={authenticate}
                 setAuthentication={setAuthentication}
-                token={token}
                 username={username}
                 setUsername={setUsername}
               />
@@ -70,16 +73,15 @@ const Navigation = ({ authenticate, setAuthentication, token, setToken, username
               <Login
                 authenticate={authenticate}
                 setAuthentication={setAuthentication}
-                token={token}
                 username={username}
                 setUsername={setUsername}
+                setToken={setToken}
               />
             </Route>
             <Route path="/logout">
               <Logout
                 authenticate={authenticate}
                 setAuthentication={setAuthentication}
-                token={token}
               />
             </Route>
             <Route path="/register">

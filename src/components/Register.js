@@ -2,8 +2,9 @@ import "./Register.css";
 
 import { useState } from "react";
 import { Redirect } from "react-router-dom";
+import {login, getToken} from '../auth'
 
-const Register = ({ authenticate, setAuthentication, token, setToken, username, setUsername }) => {
+const Register = ({ authenticate, setAuthentication, setToken, username, setUsername }) => {
   
   const [password, setPassWord] = useState();
   const [passwordConfirmation, setPassWordConfirmation] = useState();
@@ -28,23 +29,14 @@ const Register = ({ authenticate, setAuthentication, token, setToken, username, 
       )
         .then((response) => response.json())
         .then((result) => {
-          console.log(result);
           // setToken state result
-          login(result);
-          setToken(localStorage.getItem("token"));
+          login(result.data.token);
+          setToken(getToken());
+          isLoggedIn(result)
         })
         .catch(console.error);
     }
   }
-  console.log(token);
-
-  const login = (result) => {
-    localStorage.setItem("token", result.data.token);
-  };
-
-  const logOut = () => {
-    localStorage.removeItem("token");
-  };
 
   const isLoggedIn = (result) => {
     if (result.data.token) {
@@ -55,9 +47,9 @@ const Register = ({ authenticate, setAuthentication, token, setToken, username, 
     }
   };
 
-  // if (login) {
-  //   return <Redirect to="./profile" />;
-  // }
+  if (authenticate) {
+    return <Redirect to="./profile" />;
+  }
   return (
     <div className="registerInput">
       <h1> Register Page </h1>

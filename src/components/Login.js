@@ -2,14 +2,14 @@ import { Link, Redirect } from "react-router-dom";
 import { useState } from "react";
 
 import "./Login.css";
-import { getToken, login, isLoggedIn } from "../auth";
+import {getToken, login} from "../auth";
 
 const Login = ({
   authenticate,
   setAuthentication,
-  token,
   username,
   setUsername,
+  setToken
 }) => {
   const [password, setPassword] = useState();
   const [loginSuccessful, setLoginSuccessful] = useState(false);
@@ -35,26 +35,16 @@ const Login = ({
       .then((response) => response.json())
       .then((result) => {
         login(result.data.token);
-        setAuthentication(true);
+        setToken(getToken())
         isLoggedIn(result.data.token);
       })
       .catch(console.error);
-
-    // check that the user entered stuff first
-    // ajax request to backend
-    // backend response will say authenticated or not
   }
 
-  // const login = (result) => {
-  //   localStorage.setItem("token", result.data.token);
-  // };
 
-  // const logOut = () => {
-  //   localStorage.removeItem("token");
-  // };
+ 
 
   const isLoggedIn = (token) => {
-    // prop function,, pass as a prop
     if (token) {
       console.log("is logged in");
       setAuthentication(true);
@@ -64,7 +54,7 @@ const Login = ({
     }
   };
 
-  if (loginSuccessful) {
+  if (loginSuccessful && authenticate) {
     return <Redirect to="/profile" />;
   }
 

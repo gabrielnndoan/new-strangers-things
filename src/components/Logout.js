@@ -1,25 +1,22 @@
 import "./Logout.css";
 import { Redirect } from "react-router-dom";
-import { useState } from 'react';
+import { useEffect, useState } from "react";
 import { getToken, logout } from "../auth";
 
-const Logout = ({ token, authenticate, setAuthentication }) => {
-  const [logoutSuccessful, setLogoutSuccessful]= useState(false);
-  getToken(token);
-  const logOutCompletely = () => {
-    if (localStorage.getItem("token")) {
+const Logout = ({ authenticate, setAuthentication }) => {
+  const [logoutSuccessful, setLogoutSuccessful] = useState(false);
+ 
+  useEffect(() => {
+    if (getToken() ) {
       logout();
+      setLogoutSuccessful(true);
       setAuthentication(false);
-      setLogoutSuccessful(true)
     }
-    
-  };
+  }, []);
 
-  logOutCompletely();
-
-  if(logoutSuccessful){ 
-    return <Redirect to="/home" />;
-  } 
+  if (logoutSuccessful && !authenticate) {
+    return <Redirect to="/" />;
+  }
   return null;
 };
 export default Logout;
