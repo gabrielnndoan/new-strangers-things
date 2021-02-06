@@ -6,14 +6,13 @@ Modal.setAppElement("#root");
 const SendMessages = ({ posts, postId, setPostId }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [content, setContent] = useState("");
-  
 
-  posts.map(post => {
-    setPostId(post._id)
-  })
+  posts.map((post) => {
+    setPostId(post._id);
+  });
 
   function createMessage(event) {
-    event.preventDefault()
+    event.preventDefault();
     if (getToken()) {
       fetch(
         `https://strangers-things.herokuapp.com/api/2010-LSU-RM-WEB-PT/posts/${postId}/messages`,
