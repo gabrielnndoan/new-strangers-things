@@ -1,23 +1,22 @@
+import "./SendMessages.css";
 import { useState } from "react";
 import Modal from "react-modal";
-import { getToken } from "../auth";
 Modal.setAppElement("#root");
-import "./SendMessages.css";
+import { getToken } from "../auth";
 
 const SendMessages = ({ id }) => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [content, setContent] = useState("");
+  const [ modalIsOpen, setModalIsOpen ] = useState(false);
+  const [ content, setContent ] = useState("");
 
-  function createMessage(event) {
-    event.preventDefault();
+  function createMessage() {
     if (getToken()) {
       fetch(
-        `https://strangers-things.herokuapp.com/api/2010-LSU-RM-WEB-PT/posts/${id}/messages`,
+        `https://strangers-things.herokuapp.com/api/2010-LSU-RM-WEB-PT/posts/${ id }/messages`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${getToken()}`,
+            Authorization: `Bearer ${ getToken() }`,
           },
           body: JSON.stringify({
             message: {
@@ -32,7 +31,6 @@ const SendMessages = ({ id }) => {
         })
         .catch(console.error);
     }
-    event.target.reset();
   }
 
   return (
@@ -43,7 +41,7 @@ const SendMessages = ({ id }) => {
           setModalIsOpen(true);
         }}
       >
-        Send Message
+      Send Message
       </button>
       <Modal
         style={{
@@ -73,7 +71,7 @@ const SendMessages = ({ id }) => {
         }}
         isOpen={modalIsOpen}
       >
-        <form className="sendMessageForm" onSubmit={createMessage}>
+        <form className="sendMessageForm" onSubmit={ createMessage }>
           <label className="contentLabel" id="wrapper">
             Content:
           </label>

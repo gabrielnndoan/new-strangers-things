@@ -1,10 +1,10 @@
 import "./Logout.css";
+import { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { getToken, logout } from "../auth";
 
 const Logout = ({ authenticate, setAuthentication }) => {
-  const [logoutSuccessful, setLogoutSuccessful] = useState(false);
+  const [ logoutSuccessful, setLogoutSuccessful ] = useState(false);
  
   useEffect(() => {
     if (getToken() ) {

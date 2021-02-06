@@ -1,8 +1,7 @@
-import { Link, Redirect } from "react-router-dom";
-import { useState } from "react";
-
 import "./Login.css";
-import {getToken, login} from "../auth";
+import { useState } from "react";
+import { Link, Redirect } from "react-router-dom";
+import { getToken, login } from "../auth";
 
 const Login = ({
   authenticate,
@@ -11,12 +10,11 @@ const Login = ({
   setUsername,
   setToken
 }) => {
-  const [password, setPassword] = useState();
-  const [loginSuccessful, setLoginSuccessful] = useState(false);
+  const [ password, setPassword ] = useState();
+  const [ loginSuccessful, setLoginSuccessful ] = useState(false);
 
   function authentication(event) {
     event.preventDefault();
-
     fetch(
       "https://strangers-things.herokuapp.com/api/2010-LSU-RM-WEB-PT/users/login",
       {
@@ -58,7 +56,7 @@ const Login = ({
   return (
     <div className="registerInput">
       <h1> Login Page </h1>
-      <form className="form" onSubmit={authentication}>
+      <form className="form" onSubmit={ authentication }>
         <label className="userLabel">Username:</label>
         <input
           className="userInput"

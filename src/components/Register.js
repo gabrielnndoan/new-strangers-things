@@ -1,12 +1,11 @@
 import "./Register.css";
-
 import { useState } from "react";
 import { Redirect } from "react-router-dom";
-import {login, getToken} from '../auth'
+import { login, getToken } from '../auth'
 
-const Register = ({ authenticate, setAuthentication, setToken, username, setUsername }) => {
-  const [password, setPassWord] = useState();
-  const [passwordConfirmation, setPassWordConfirmation] = useState();
+const Register = ({ authenticate, setAuthentication, username, setUsername, token, setToken }) => {
+  const [ password, setPassWord ] = useState();
+  const [ passwordConfirmation, setPassWordConfirmation ] = useState();
 
   function createUser(event) {
     event.preventDefault();
@@ -28,7 +27,6 @@ const Register = ({ authenticate, setAuthentication, setToken, username, setUser
       )
         .then((response) => response.json())
         .then((result) => {
-          // setToken state result
           login(result.data.token);
           setToken(getToken());
           isLoggedIn(result)
@@ -46,13 +44,13 @@ const Register = ({ authenticate, setAuthentication, setToken, username, setUser
     }
   };
 
-  if (authenticate) {
+  if (authenticate && token) {
     return <Redirect to="./profile" />;
   }
   return (
     <div className="registerInput">
       <h1> Register Page </h1>
-      <form className="form" onSubmit={createUser}>
+      <form className="form" onSubmit={ createUser }>
         <label className="userLabel">Username:</label>
         <input
           className="userInput"
@@ -61,7 +59,6 @@ const Register = ({ authenticate, setAuthentication, setToken, username, setUser
             setUsername(event.target.value);
           }}
         ></input>
-
         <label className="passwordLabel">Password:</label>
         <input
           className="passwordInput"
