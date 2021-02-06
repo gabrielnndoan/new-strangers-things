@@ -6,6 +6,28 @@
     
 }
 
+.sendMessageButton {
+    padding: 10px;
+    border-radius: 10%;
+    color: white;
+    background-image: linear-gradient(
+        to right top,
+        #e691ee,
+        #d882e7,
+        #ca73e1,
+        #bc64db,
+        #ac55d5,
+        #a04ed3,
+        #9347d2,
+        #8540d0,
+        #7640d2,
+        #6540d4,
+        #5040d6,
+        #3241d8
+      );
+    font-size: 20px;
+}
+
 .contentLabel{
     grid-row: 1;
     margin: auto;

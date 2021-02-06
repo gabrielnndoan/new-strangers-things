@@ -35,7 +35,7 @@ const SendMessages = ({ id }) => {
 
   return (
     <div>
-      <button
+      <button className="sendMessageButton"
         onClick={(event) => {
           event.preventDefault();
           setModalIsOpen(true);

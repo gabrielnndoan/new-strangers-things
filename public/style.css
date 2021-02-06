@@ -1,20 +1,15 @@
-
-
 * {
     padding: 0;
     margin: 0;
     border: 0;
     box-sizing: border-box;
-    /* background-color: rgb(144, 184, 230); */
-    
   }
 
-  #root{
-    background-color: #68b0ab;
-    /* background-image: url("bluewatercolor.jpg"); */
+  #root {
+    height: 100vh;
   }
 
-  button {
+  /* button {
     background-image: linear-gradient(
       to right top,
       #e691ee,
@@ -32,4 +27,4 @@
     );
   }
 
-  
+   */

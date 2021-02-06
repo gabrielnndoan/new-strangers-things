@@ -5,31 +5,33 @@
     align-items: center;
 } */
 
-
 .postPage {
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr 1fr;
+  /* display: grid; */
+  /* grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr; */
   text-align: center;
-  grid-auto-flow: row;
-  width: 200px;
+  /* grid-auto-flow: row; */
+  margin: auto;
+  width: 1500px;
   margin-top: 100px;
   margin-bottom: 100px;
+  background-color: #e06c00;
+  height: 1500px;
 }
 
 .allPosts {
-  grid-row: 1;
-  grid-column: 1;
+  /* grid-row: 1;
+  grid-column: 1; */
   margin-top: 50px;
   margin-left: 50px;
-  border: solid black;
-  width: 1000px;
-  height: 1500px;
-  overflow: scroll;
+  width: auto;
+  height: 1000px;
+  overflow: auto;
+  background-color: #e06c00;
 }
 h2 {
   text-align: center;
-  font-size: 30px;
+  font-size: 50px;
   margin-top: 25px;
   margin-bottom: 25px;
   font-family: "Cinzel Decorative", cursive;
@@ -37,7 +39,7 @@ h2 {
 
 h3 {
   text-align: center;
-  font-size: 20px;
+  font-size: 30px;
   margin-top: 25px;
   margin-bottom: 15px;
   font-family: "Cinzel Decorative", cursive;
@@ -45,29 +47,47 @@ h3 {
 
 li {
   list-style: none;
+  margin-bottom: 10px;
+}
+
+.price {
+  color: white;
+}
+
+.searchBar {
+  color: white;
+  font-weight: bold;
+}
+
+.searchBarInput {
+  width: 300px;
+  height: 50px;
+  font-size: 25px;
 }
 
 .post {
   margin: auto;
-  border: solid black;
-  width: 900px;
-  height: 200px;
-  
-  
+  border: 3px solid orange;
+  width: 750px;
+  height: 275px;
+  margin-top: 20px;
+  background: #ffbb00  ;
+  box-shadow: 3px 3px 3px 3px black;
+  font-size: 25px;
 }
 
 .postForm {
-  display: grid;
+  /* display: grid;
   grid-template-rows: repeat(4, 1fr);
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr; */
   margin: 15%;
   align-items: center;
 }
 
 .makePost {
   position: relative;
-  grid-row: 1;
-  grid-column: 2;
+  /* grid-row: 1;
+  grid-column: 2; */
   margin-top: 50px;
   margin-left: 50px;
   border: solid black;
@@ -76,16 +96,36 @@ li {
 }
 
 .makePostButton {
-  grid-row: 4;
-  grid-column: 1/2;
-  padding: 15px;
-  position: absolute;
-  bottom: 0;
-  width: 30%;
-  margin-left: 35%;
-  margin-right: 35%;
-  margin-bottom: 30px;
-  font-family: "Raleway", sans-serif;
+  color: purple;
+  border: 5px solid gold;
+  background-color: white;
+  padding: 25px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 10%;
+}
+
+.viewMessagesButton {
+  padding: 10px;
+  border-radius: 10%;
+  color: white;
+  background-image: linear-gradient(
+      to right top,
+      #e691ee,
+      #d882e7,
+      #ca73e1,
+      #bc64db,
+      #ac55d5,
+      #a04ed3,
+      #9347d2,
+      #8540d0,
+      #7640d2,
+      #6540d4,
+      #5040d6,
+      #3241d8
+    );
+  font-size: 20px;
+  text-decoration: none;
 }
 
 .titleLabel {
@@ -129,79 +169,3 @@ li {
   margin-bottom: 25px;
   padding: 20px;
 }
-
-
-
-/* Button used to open the contact form - fixed at the bottom of the page */
-.open-button {
-  background-color: #555;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  opacity: 0.8;
-  position: fixed;
-  bottom: 23px;
-  right: 28px;
-  width: 280px;
-}
-
-/* The popup form - hidden by default */
-.form-popup {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  right: 15px;
-  border: 3px solid #f1f1f1;
-  z-index: 9;
-}
-
-/* Add styles to the form container */
-.form-container {
-  max-width: 300px;
-  padding: 10px;
-  background-color: white;
-}
-
-/* Full-width input fields */
-.form-container input[type=text], .form-container input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #f1f1f1;
-}
-
-/* When the inputs get focus, do something */
-.form-container input[type=text]:focus, .form-container input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
-}
-
-/* Set a style for the submit/login button */
-.form-container .btn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  margin-bottom:10px;
-  opacity: 0.8;
-}
-
-/* Add a red background color to the cancel button */
-.form-container .cancel {
-  background-color: red;
-}
-
-/* Add some hover effects to buttons */
-.form-container .btn:hover, .open-button:hover {
-  opacity: 1;
-}
-
-#myForm {
-  display: block;
-}
-
-* {box-sizing: border-box;}

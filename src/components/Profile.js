@@ -43,7 +43,7 @@ const Profile = ({ username, setUsername, authenticate }) => {
     <div>
       { getToken() && authenticate ? (
         <>
-          <h1> Welcome { username } </h1>
+          <h1 className="username"> Welcome { username } </h1>
           <div className="profileSections">
             <section className="myPosts">
               <h2> My Posts </h2>

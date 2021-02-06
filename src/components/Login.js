@@ -15,43 +15,47 @@ const Login = ({
 
   function authentication(event) {
     event.preventDefault();
-    fetch(
-      "https://strangers-things.herokuapp.com/api/2010-LSU-RM-WEB-PT/users/login",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          user: {
-            username: username,
-            password: password,
+      fetch(
+        "https://strangers-things.herokuapp.com/api/2010-LSU-RM-WEB-PT/users/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
           },
-        }),
-      }
-    )
-      .then((response) => response.json())
-      .then((result) => {
-        login(result.data.token);
-        setToken(getToken())
-        isLoggedIn(result.data.token);
-      })
-      .catch(console.error);
+          body: JSON.stringify({
+            user: {
+              username: username,
+              password: password,
+            },
+          }),
+        }
+      )
+        .then((response) => response.json())
+        .then((result) => {
+          console.log(result)
+          login(result.data.token);
+          setToken(getToken())
+          isLoggedIn(result)
+        })
+        .catch(console.error);
+  
   }
 
-  const isLoggedIn = (token) => {
-    if (token) {
+  const isLoggedIn = (result) => {
+    if (result) {
       console.log("is logged in");
       setAuthentication(true);
       setLoginSuccessful(true);
+      alert(result.data.message)
     } else {
-      console.log("not logged in");
+      console.log("not logged in looool")
+      alert(result.error.message)
     }
-  };
+  }; 
 
   if (loginSuccessful && authenticate) {
     return <Redirect to="/profile" />;
-  }
+  } 
 
   return (
     <div className="registerInput">
