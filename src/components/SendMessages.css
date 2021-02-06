@@ -1,0 +1,32 @@
+.sendMessageForm{
+    display: grid;
+    grid-template-rows: 20% 70% 20% 20%;
+    grid-template-columns: 1fr;
+    position: relative;
+    
+}
+
+.contentLabel{
+    grid-row: 1;
+    margin: auto;
+}
+
+.contentInput{
+    grid-row: 2;
+    /* align-content: center; */
+    height: 100px;
+    width: 200px;
+    margin: auto;
+    text-align: center;
+    
+}
+
+.submitMessageButton{
+    grid-row: 3;
+    margin: auto;
+}
+
+.closeModalButton{
+    grid-row: 4;
+    margin: auto;
+}

@@ -2,20 +2,17 @@ import { useState } from "react";
 import Modal from "react-modal";
 import { getToken } from "../auth";
 Modal.setAppElement("#root");
+import './SendMessages.css'
 
-const SendMessages = ({ posts, postId, setPostId }) => {
+const SendMessages = ({ id }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [content, setContent] = useState("");
 
-  posts.map((post) => {
-    setPostId(post._id);
-  });
-
-  function createMessage(event) {
-    event.preventDefault();
+  function createMessage() {
+    
     if (getToken()) {
       fetch(
-        `https://strangers-things.herokuapp.com/api/2010-LSU-RM-WEB-PT/posts/${postId}/messages`,
+        `https://strangers-things.herokuapp.com/api/2010-LSU-RM-WEB-PT/posts/${id}/messages`,
         {
           method: "POST",
           headers: {
@@ -35,25 +32,54 @@ const SendMessages = ({ posts, postId, setPostId }) => {
         })
         .catch(console.error);
     }
-    event.target.reset();
+    
   }
+ 
 
   return (
     <div>
-      <button onClick={() => setModalIsOpen(true)}>Send Message</button>
-      <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-        <form onSubmit={createMessage}>
-          <label className="descriptionLabel" id="wrapper">
+      <button onClick={(event) => {
+        event.preventDefault();
+        setModalIsOpen(true)}}>Send Message</button>
+      <Modal 
+        style={{
+          overlay: {
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'white',
+            border: 'solid gold'
+          },
+          content: {
+            position: 'absolute',
+            top: '40px',
+            left: '40px',
+            right: '40px',
+            bottom: '40px',
+            border: '5px solid gold',
+            background: '#fff',
+            overflow: 'auto',
+            WebkitOverflowScrolling: 'touch',
+            borderRadius: '4px',
+            outline: 'none',
+            padding: '10px'
+          }
+        }}
+        isOpen={modalIsOpen} >
+        <form className="sendMessageForm"onSubmit={createMessage}>
+          <label className="contentLabel" id="wrapper">
             Content:
           </label>
           <input
-            className="descriptionInput"
+            className="contentInput"
             onChange={(event) => {
               setContent(event.target.value);
             }}
           ></input>
-          <button type="submit">Send Message</button>
-          <button onClick={() => setModalIsOpen(false)}>Close</button>
+          <button className="submitMessageButton" type="submit">Send Message</button>
+          <button className="closeModalButton" onClick={() => setModalIsOpen(false)}>Close</button>
         </form>
       </Modal>
     </div>

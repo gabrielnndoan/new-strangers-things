@@ -35,12 +35,6 @@ const Profile = ({ username, setUsername, authenticate }) => {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
-    fetch("https://strangers-things.herokuapp.com/api/2010-LSU-RM-WEB-PT/posts")
-      .then((response) => response.json())
-      .then((result) => {
-        setPosts(result.data.posts);
-      })
-      .catch(console.error);
     fetch(
       "https://strangers-things.herokuapp.com/api/2010-LSU-RM-WEB-PT/users/me",
       {
@@ -54,6 +48,7 @@ const Profile = ({ username, setUsername, authenticate }) => {
       .then((result) => {
         setUsername(result.data.username);
         console.log(result);
+        setPosts(result.data.posts);
         setMessages(result.data.messages);
       })
       .catch(console.error);
@@ -92,7 +87,7 @@ const Profile = ({ username, setUsername, authenticate }) => {
               <h2> My Posts </h2>
               <section>
                 {posts.map((post, index) => {
-                  if (username === post.author.username) {
+        
                     return (
                       <div className="postList" key={index}>
                         <h3> {post.author.username} </h3>
@@ -107,7 +102,7 @@ const Profile = ({ username, setUsername, authenticate }) => {
                         </button>
                       </div>
                     );
-                  }
+                  
                 })}
               </section>
             </section>
