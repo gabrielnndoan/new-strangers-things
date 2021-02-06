@@ -10,11 +10,11 @@ const MessagesLayout = ({ messages, username }) => {
       <h2> Messages to Me </h2>
       <section>
         {messages
-          .filter((message) => {
-            if (message.fromUser.username !== username) {
-              return message;
-            }
-          })
+          // .filter((message) => {
+          //   if (message.fromUser.username !== username) {
+          //     return message;
+          //   }
+          // })
           .map((message, index) => {
             return (
               <section className="messageList" key={index}>

@@ -5,8 +5,6 @@ import { getToken } from "../auth";
 import SendMessages from "./SendMessages";
 
 
-
-
 const MakePostForm = ({ posts, setPosts }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
