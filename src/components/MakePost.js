@@ -60,8 +60,8 @@ const MakePostForm = ({ posts, setPosts }) => {
           overlay: {
             position: "fixed",
             top: 200,
-            left: 200,
-            right: 200,
+            left: 300,
+            right: 300,
             bottom: 200,
             backgroundColor: "white",
             border: "solid gold",

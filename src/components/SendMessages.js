@@ -49,10 +49,10 @@ const SendMessages = ({ id }) => {
         style={{
           overlay: {
             position: "fixed",
-            top: 350,
-            left: 350,
-            right: 350,
-            bottom: 350,
+            top: 250,
+            left: 450,
+            right: 450,
+            bottom: 250,
             backgroundColor: "white",
             border: "solid gold",
           },

@@ -2,7 +2,6 @@ import "./Profile.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getToken, getUsername } from "../auth";
-import SendMessages from "./SendMessages";
 
 const Profile = ({ username, setUsername, authenticate }) => {
   const [ posts, setPosts ] = useState([]);

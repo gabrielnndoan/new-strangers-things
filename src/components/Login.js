@@ -31,7 +31,9 @@ const Login = ({
       )
         .then((response) => response.json())
         .then((result) => {
-          console.log(result)
+          if(!result.success) {
+            alert(result.error.message)
+          }
           login(result.data.token);
           setToken(getToken())
           isLoggedIn(result)
@@ -47,7 +49,7 @@ const Login = ({
       setLoginSuccessful(true);
       alert(result.data.message)
     } else {
-      console.log("not logged in looool")
+      console.log("not logged in")
       alert(result.error.message)
     }
   }; 

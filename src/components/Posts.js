@@ -1,7 +1,7 @@
 import "./Posts.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { getToken, getUsername } from "../auth";
+import { getUsername } from "../auth";
 import SendMessages from "./SendMessages";
 import MakePostForm from "./MakePost"
 
@@ -43,8 +43,10 @@ const Posts = ({ authenticate, username, setUsername }) => {
               .filter((post) => {
                 if(searchTerm === "") {
                   return post
-                } else if(post.title.toLowerCase().includes(searchTerm.toLowerCase()) || post.description.toLowerCase().includes(searchTerm.toLowerCase()) || post.author.username.toLowerCase().includes(searchTerm.toLowerCase())) {
-                  return post
+                } else if(post.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                    post.description.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                    post.author.username.toLowerCase().includes(searchTerm.toLowerCase())) {
+                    return post
                 }
               })
               .map((post, index) => {

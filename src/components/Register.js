@@ -27,6 +27,9 @@ const Register = ({ authenticate, setAuthentication, username, setUsername, toke
       )
         .then((response) => response.json())
         .then((result) => {
+          if(!result.success) {
+            alert(result.error.message)
+          }
           login(result.data.token);
           setToken(getToken());
           isLoggedIn(result)
@@ -39,6 +42,7 @@ const Register = ({ authenticate, setAuthentication, username, setUsername, toke
     if (result.data.token) {
       console.log("is logged in");
       setAuthentication(true);
+      alert(result.data.message)
     } else {
       console.log("not logged in");
     }
