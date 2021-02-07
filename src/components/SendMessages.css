@@ -1,0 +1,58 @@
+.sendMessageForm{
+    display: grid;
+    grid-template-rows: 20% 70% 20% 20%;
+    grid-template-columns: 1fr;
+    position: relative;
+    
+}
+
+.sendMessageButton {
+    padding: 10px;
+    border-radius: 10%;
+    color: white;
+    background-image: linear-gradient(
+        to right top,
+        #e691ee,
+        #d882e7,
+        #ca73e1,
+        #bc64db,
+        #ac55d5,
+        #a04ed3,
+        #9347d2,
+        #8540d0,
+        #7640d2,
+        #6540d4,
+        #5040d6,
+        #3241d8
+      );
+    font-size: 20px;
+}
+
+.contentLabel{
+    margin: auto;
+}
+
+.contentInput{
+    height: 100px;
+    width: 200px;
+    margin: auto;
+    text-align: center;  
+}
+
+.submitMessageButton{
+    margin: auto;
+    display: block;
+    color: purple;
+    border: 5px solid gold;
+    background-color: white;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 10%;
+}
+
+.closeModalButton{
+    grid-row: 4;
+    padding: 10px;
+    margin: auto;
+}

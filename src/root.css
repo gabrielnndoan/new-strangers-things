@@ -1,0 +1,68 @@
+header {
+  display: flex;
+  justify-content: center;
+  font-size: 100px;
+  font-family: 'Molle', cursive;
+  color: lavender;
+  background-color: rgb(255, 172, 19);
+  background-image: linear-gradient(43deg, #8c49a7 0%, #b83f3f 46%, #f0a925 100%);
+
+}
+
+.searchAndMenu {
+  display: flex;
+  justify-content: center;
+}
+
+nav {
+  display: flex;
+  font-family: 'Montserrat', sans-serif;
+  
+  justify-content: flex-end;
+  background-image: linear-gradient(
+    to right top,
+    #e691ee,
+    #d882e7,
+    #ca73e1,
+    #bc64db,
+    #ac55d5,
+    #a04ed3,
+    #9347d2,
+    #8540d0,
+    #7640d2,
+    #6540d4,
+    #5040d6,
+    #3241d8
+  );
+  border: 3px solid white;
+  width: 1000px;
+  text-align: center;
+}
+
+.link {
+  justify-content: flex-end;
+  align-items: space-between;
+  padding: 2px 2em;
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+.navForm {
+  display: flex;
+  justify-content: flex-start;
+}
+
+label {
+  margin-right: 50px;
+  font-size: 25px;
+}
+
+.searchBar{
+  color: #3f843e;
+}
+
+input {
+  border: solid black;
+  margin-right: 200px;
+}
