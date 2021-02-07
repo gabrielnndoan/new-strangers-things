@@ -16,6 +16,8 @@ header {
 
 nav {
   display: flex;
+  font-family: 'Montserrat', sans-serif;
+  
   justify-content: flex-end;
   background-image: linear-gradient(
     to right top,
@@ -33,6 +35,8 @@ nav {
     #3241d8
   );
   border: 3px solid white;
+  width: 1000px;
+  text-align: center;
 }
 
 .link {

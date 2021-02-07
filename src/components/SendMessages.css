@@ -7,6 +7,7 @@
 }
 
 .sendMessageButton {
+
     padding: 10px;
     border-radius: 10%;
     color: white;
@@ -29,26 +30,33 @@
 }
 
 .contentLabel{
-    grid-row: 1;
+   
     margin: auto;
 }
 
 .contentInput{
-    grid-row: 2;
+    
     /* align-content: center; */
     height: 100px;
     width: 200px;
     margin: auto;
-    text-align: center;
-    
+    text-align: center;  
 }
 
 .submitMessageButton{
-    grid-row: 3;
     margin: auto;
+    display: block;
+    color: purple;
+    border: 5px solid gold;
+    background-color: white;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 10%;
 }
 
 .closeModalButton{
     grid-row: 4;
+    padding: 10px;
     margin: auto;
 }

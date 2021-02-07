@@ -8,7 +8,8 @@ const SendMessages = ({ id }) => {
   const [ modalIsOpen, setModalIsOpen ] = useState(false);
   const [ content, setContent ] = useState("");
 
-  function createMessage() {
+  function createMessage(event) {
+    event.preventDefault();
     if (getToken()) {
       fetch(
         `https://strangers-things.herokuapp.com/api/2010-LSU-RM-WEB-PT/posts/${ id }/messages`,
@@ -31,6 +32,7 @@ const SendMessages = ({ id }) => {
         })
         .catch(console.error);
     }
+    event.target.reset();
   }
 
   return (
@@ -47,10 +49,10 @@ const SendMessages = ({ id }) => {
         style={{
           overlay: {
             position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
+            top: 350,
+            left: 350,
+            right: 350,
+            bottom: 350,
             backgroundColor: "white",
             border: "solid gold",
           },

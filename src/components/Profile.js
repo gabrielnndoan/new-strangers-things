@@ -2,6 +2,7 @@ import "./Profile.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getToken, getUsername } from "../auth";
+import SendMessages from "./SendMessages";
 
 const Profile = ({ username, setUsername, authenticate }) => {
   const [ posts, setPosts ] = useState([]);
@@ -44,6 +45,7 @@ const Profile = ({ username, setUsername, authenticate }) => {
       { getToken() && authenticate ? (
         <>
           <h1 className="username"> Welcome { username } </h1>
+          <Link to="/posts" className="makeNewPostRoute"> Create a New Post </Link>
           <div className="profileSections">
             <section className="myPosts">
               <h2> My Posts </h2>
@@ -57,7 +59,7 @@ const Profile = ({ username, setUsername, authenticate }) => {
                           <li> { post.description } </li>
                           <li> { post.price } </li>
                         </ul>
-                        <button onClick={() => deletePost(post._id)}>
+                        <button className="deletePostButton"onClick={() => deletePost(post._id)}>
                           Delete Post
                         </button>
                       </div>
@@ -65,12 +67,11 @@ const Profile = ({ username, setUsername, authenticate }) => {
                 })}
               </section>
             </section>
-            <Link to="/posts"> Create a New Post </Link>
             <MessagesLayout messages={ messages } username={ username } />
           </div>
         </>
       ) : (
-        <div> Login to access profile.</div>
+        <div className="unauthenticatedProfile"> Login to access profile.</div>
       )}
     </div>
   );

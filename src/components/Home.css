@@ -1,19 +1,27 @@
 .homePage {
+  display: block;
+  margin: auto;
   text-align: center;
   margin-top: 50px;
+  border: 10px solid rgb(224, 126, 183);
+  width: 1000px;
+  height: 550px;
 }
 
 .welcome {
   font-size: 50px;
   font-family: "Bungee Shade", cursive;
   color: black;
+  margin-top: 25px;
 }
 
 .description {
-  font-size: 35px;
+  font-size: 30px;
+  font-family: 'Roboto', sans-serif;
   margin-bottom: 20px;
   width: 700px;
   margin: auto;
+  margin-top: 25px;
   height: 200px;
 }
 
@@ -30,6 +38,7 @@
   margin-top: 30px;
   padding: 15px;
   font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
   text-decoration: none;
   width: 100px;
   border-radius: 15%;
@@ -56,10 +65,11 @@
   margin: auto;
   margin-top: 30px;
   text-align: center;
-  padding: 15px;
+  padding: 20px;
   font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
   text-decoration: none;
-  width: 150px;
+  width: 200px;
   border-radius: 15%;
   background-image: linear-gradient(
     to right top,
@@ -85,6 +95,7 @@
   margin-top: 30px;
   padding: 20px;
   font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
   text-decoration: none;
   text-align: center;
   width: 100px;

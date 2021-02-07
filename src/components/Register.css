@@ -1,69 +1,97 @@
 .form {
-  display: grid;
-  grid-template-rows: repeat(5, 1fr);
-  grid-template-columns: 1fr 1fr;
-  text-align: center;
-  grid-auto-flow: row;
-  width: 200px;
+  display: block;
   margin: auto;
+  text-align: center;
+  width: 200px;
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 h1 {
   text-align: center;
   margin-top: 50px;
   margin-bottom: 15px;
+  font-family: "Bungee Shade", cursive;
+  font-size: 50px;
+}
+.rules{
+  display: block;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: #e06c00;
 }
 
 .userLabel {
-  grid-row-start: 2;
-  grid-column-start: 1;
+  display: block;
+  margin: auto;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
 .userInput {
-  grid-row-start: 2;
-  grid-column-start: 2;
+  display: block;
+  margin: auto;
   margin-top: 10px;
   margin-bottom: 10px;
   width: 150px;
 }
 
 .passwordLabel {
-  grid-row-start: 3;
-  grid-column-start: 1;
+  display: block;
+  margin: auto;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
 .passwordInput {
-  grid-row-start: 3;
-  grid-column-start: 2;
+  display: block;
+  margin: auto;
   margin-top: 10px;
   margin-bottom: 10px;
   width: 150px;
 }
 
 .confirmLabel {
-  grid-row-start: 4;
-  grid-column-start: 1;
+  display: block;
+  margin: auto;
   margin-top: 10px;
   margin-bottom: 10px;
+  margin-right: 20px;
 }
 
 .confirmInput {
-  grid-row-start: 4;
-  grid-column-start: 2;
+  display: block;
+  margin: auto;
   margin-top: 10px;
   margin-bottom: 10px;
   width: 150px;
 }
 
 .submit {
+  display: block;
+  margin: auto;
+  margin-top: 20px;
   padding: 15px;
   font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
   color: white;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin: auto;
+  border-radius: 10%;
+  background-image: linear-gradient(
+        to right top,
+        #e691ee,
+        #d882e7,
+        #ca73e1,
+        #bc64db,
+        #ac55d5,
+        #a04ed3,
+        #9347d2,
+        #8540d0,
+        #7640d2,
+        #6540d4,
+        #5040d6,
+        #3241d8
+      );
 }

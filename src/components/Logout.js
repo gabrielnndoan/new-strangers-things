@@ -1,4 +1,3 @@
-import "./Logout.css";
 import { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import { getToken, logout } from "../auth";

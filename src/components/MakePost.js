@@ -59,10 +59,10 @@ const MakePostForm = ({ posts, setPosts }) => {
         style={{
           overlay: {
             position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
+            top: 200,
+            left: 200,
+            right: 200,
+            bottom: 200,
             backgroundColor: "white",
             border: "solid gold",
           },
@@ -84,6 +84,7 @@ const MakePostForm = ({ posts, setPosts }) => {
         isOpen={modalIsOpen}
       >
         <form className="postForm" onSubmit={makeNewPost}>
+          <h3> Make a Posting! </h3>
           <label className="titleLabel" id="wrapper">
             Title:
           </label>
@@ -109,6 +110,12 @@ const MakePostForm = ({ posts, setPosts }) => {
           />
           <button className="makePostButton" type="submit">
             Make a New Post
+          </button>
+          <button
+            className="closeModalButton"
+            onClick={() => setModalIsOpen(false)}
+          >
+            Close
           </button>
         </form>
       </Modal>

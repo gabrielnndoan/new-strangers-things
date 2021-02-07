@@ -12,7 +12,6 @@ const Login = ({
 }) => {
   const [ password, setPassword ] = useState();
   const [ loginSuccessful, setLoginSuccessful ] = useState(false);
-
   function authentication(event) {
     event.preventDefault();
       fetch(
@@ -72,6 +71,7 @@ const Login = ({
 
         <label className="passwordLabel">Password:</label>
         <input
+          type="password"
           className="passwordInput"
           minLength="8"
           onChange={(event) => {

@@ -50,6 +50,7 @@ const Register = ({ authenticate, setAuthentication, username, setUsername, toke
   return (
     <div className="registerInput">
       <h1> Register Page </h1>
+      <p className="rules"> Username & Password must be 8 characters! </p>
       <form className="form" onSubmit={ createUser }>
         <label className="userLabel">Username:</label>
         <input
@@ -68,7 +69,7 @@ const Register = ({ authenticate, setAuthentication, username, setUsername, toke
           }}
         ></input>
 
-        <label className="confirmLabel">Password:</label>
+        <label className="confirmLabel">Password Confirmation:</label>
         <input
           className="confirmInput"
           minLength="8"

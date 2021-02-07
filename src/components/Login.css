@@ -5,14 +5,13 @@
     text-align: center;
     grid-auto-flow: row;
     width: 200px;
-    margin-top: 100px;
-    margin-bottom: 100px;
 }
   
 h1 {
     text-align: center;
     margin-top: 100px;
-    margin-bottom: 15px;
+    font-family: "Bungee Shade", cursive;
+    font-size: 50px;
 }
   
 .userLabel {
@@ -20,6 +19,8 @@ h1 {
     grid-column-start: 1;
     margin-top: 10px;
     margin-bottom: 10px;
+    margin-right: 50px;
+    font-family: 'Montserrat', sans-serif;
 }
   
 .userInput {
@@ -28,6 +29,7 @@ h1 {
     margin-top: 10px;
     margin-bottom: 10px;
     width: 150px;
+    font-family: 'Montserrat', sans-serif;
 }
   
 .passwordLabel {
@@ -35,6 +37,8 @@ h1 {
     grid-column-start: 1;
     margin-top: 10px;
     margin-bottom: 10px;
+    margin-right: 50px;
+    font-family: 'Montserrat', sans-serif;
 }
   
 .passwordInput {
@@ -43,6 +47,7 @@ h1 {
     margin-top: 10px;
     margin-bottom: 10px;
     width: 150px;
+    font-family: 'Montserrat', sans-serif;
 }
   
 .organizeButtons{
@@ -58,6 +63,7 @@ h1 {
     margin-top: 15px;
     padding: 15px;
     font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
     width: 100px;
     border-radius: 15%;
     background-image: linear-gradient(
@@ -86,9 +92,25 @@ h1 {
     margin-top: 15px;
     padding: 15px;
     font-size: 20px;
-    width: 100px;
+    font-family: 'Montserrat', sans-serif;
+    width: 150px;
     border-radius: 15%;
-    background-color: #025159;
     color: white;
+    background-image: linear-gradient(
+        to right top,
+        #e691ee,
+        #d882e7,
+        #ca73e1,
+        #bc64db,
+        #ac55d5,
+        #a04ed3,
+        #9347d2,
+        #8540d0,
+        #7640d2,
+        #6540d4,
+        #5040d6,
+        #3241d8
+      );
+    text-decoration: none;
 }
   
